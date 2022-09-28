@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      My first jQuery slideshow
+    </title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script>
+      var currentSlide = 0;
+      var goPrev = function(){
+        $("img").fadeOut();
+        currentSlide = (currentSlide - 1) % 5;
+        if(currentSlide < 0){
+          currentSlide = 5 + currentSlide;
+        }
+        $("img:nth-of-type(" + (currentSlide+1) + ")").stop().fadeIn(1000);
+        return;
+      }
+
+      var goNext = function(){
+        $("img").fadeOut();
+        currentSlide = (currentSlide + 1) % 5;
+        $("img:nth-of-type(" + (currentSlide+1) + ")").stop().fadeIn(1000);
+        return;
+      }
+     </script>
+     <style>
+      img{
+        position: absolute;
+      }
+      #prev{
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+      }
+      #next{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+      }
+     </style>
+  </head>
+
+  <body onload='$("img").fadeOut(0);$("img:nth-of-type(1)").fadeIn()'>
+  <img src='file:///Users/christianboesch/Downloads/Images%20Webpage/images/bob-kerman-wide-angle-shot-diffuse-lighting-fantasy-intricate-elegant-highly-detailed-lifelik-194873435.png'>
+  <img src='file:///Users/christianboesch/Downloads/Images%20Webpage/images/endless-stairs-made-of-books-leading-to-heaven-sky-full-of-clouds-art-by-greg-rutkowski-and-peter--391447511.png'>
+  <img src='file:///Users/christianboesch/Downloads/Images%20Webpage/images/a-high-angle-close-up-portrait-a-very-ordinary-person-facing-front-by-lucian-freud-and-jenny-savil-873988570.png'>
+  <img src='file:///Users/christianboesch/Downloads/Images%20Webpage/images/a-portrait-of-a-young-wizard-in-a-dark-cloak-emanating-dimensional-magic-fantasy-dd-character-po-489504824.png'>
+  <img src='file:///Users/christianboesch/Downloads/Images%20Webpage/images/a-tiny-mushroom-person-with-a-mushroom-for-a-head-walking-by-a-stream-in-a-lush-forest-cgsociety-ma-844763384.png'>
+  <button onclick='goPrev()' id='prev'> Prev </button>
+  <button onclick='goNext()' id='next'> Next </button>
+
+  </body>
+</html>
